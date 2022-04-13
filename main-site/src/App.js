@@ -1,10 +1,27 @@
-import Navbar from "./components/Navbar/Navbar";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import About from "./pages/About/About";
+import Blogs from "./pages/Blogs/Blogs";
+import Contact from "./pages/Contact/Contact";
+import Home from "./pages/Home/Home";
+import Login from "./pages/Login/Login";
+import Register from "./pages/Register/Register";
+import Shop from "./pages/Shop/Shop";
 
 function App() {
 	return (
 		<>
-			<Navbar />
-			<h1>Hello world</h1>
+			<BrowserRouter>
+				<Routes>
+					<Route path="/" element={<Home />} />
+					<Route path="/home" element={<Home />} />
+					<Route path="/about" element={<About />} />
+					<Route path="/shop" element={<Shop />} />
+					<Route path="/blogs" element={<Blogs />} />
+					<Route path="/contact" element={<Contact />} />
+					<Route path="/login" element={<Login />} />
+					<Route path="/register" element={<Register />} />
+				</Routes>
+			</BrowserRouter>
 		</>
 	);
 }
