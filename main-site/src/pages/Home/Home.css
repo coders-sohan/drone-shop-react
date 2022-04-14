@@ -1,0 +1,29 @@
+.hero-sec {
+	background: url("https://drone-shop-react.netlify.app/slider1.webp");
+	background-position: center center;
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+
+@media (min-width: 375px) {
+	.hero-sec {
+		background-position: left center;
+		background-repeat: no-repeat;
+		background-size: cover;
+	}
+}
+
+.details-sec {
+	background: url("https://drone-shop-react.netlify.app/bg1.webp");
+	background-position: center center;
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+
+@media (min-width: 375px) {
+	.details-sec {
+		background-position: left center;
+		background-repeat: no-repeat;
+		background-size: cover;
+	}
+}

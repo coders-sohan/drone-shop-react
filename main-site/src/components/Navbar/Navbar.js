@@ -8,10 +8,10 @@ const Navbar = () => {
 
 	return (
 		<>
-			<nav className="w-screen h-[75px] z-10 bg-gray-50 drop-shadow-md">
+			<nav className="w-screen h-[75px] z-10 fixed bg-gray-50 drop-shadow-md">
 				{/* navbar fixed */}
-				<div className="container mx-auto  px-4">
-					<div className="py-2 flex justify-between items-center w-full h-full">
+				<div className="container mx-auto px-3">
+					<div className="pt-[0.4rem] flex justify-between items-center w-full h-full">
 						<div className="flex items-center">
 							<NavLink to="/">
 								<img
@@ -80,7 +80,7 @@ const Navbar = () => {
 								</li>
 							</ul>
 						</div>
-						<div className="hidden md:flex pr-4">
+						<div className="hidden md:flex">
 							<NavLink to="/login">
 								<button className="lg:text-lg text-base border-none text-red-600 mr-5 py-[0.3rem]">
 									Sign In
