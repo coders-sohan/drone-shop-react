@@ -7,7 +7,7 @@ const Login = () => {
 		<>
 			<Navbar />
 			<div className="h-96 py-20 text-5xl">
-				<h1>hello login</h1>
+				<h1>hello login page</h1>
 			</div>
 			<Footer />
 		</>

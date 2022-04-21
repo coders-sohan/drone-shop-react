@@ -7,7 +7,7 @@ const Register = () => {
 		<>
 			<Navbar />
 			<div className="h-96 py-20 text-5xl">
-				<h1>hello register</h1>
+				<h1>hello register page</h1>
 			</div>
 			<Footer />
 		</>
