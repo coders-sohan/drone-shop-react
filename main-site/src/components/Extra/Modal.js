@@ -22,12 +22,12 @@ export class Modal extends Component {
 					<ModalVideo
 						channel="youtube"
 						isOpen={this.state.isOpen}
-						videoId="ZS95Z4z-z4M"
+						videoId="HSsqzzuGTPo"
 						onClose={() => this.setState({ isOpen: false })}
 					/>
 					<button className="text-red-600 border-0 mt-1 mb-0" onClick={this.openModal}>
 						<span className="text-[2.8rem]">
-							<FiPlayCircle />
+							<FiPlayCircle strokeWidth="0.7" />
 						</span>
 					</button>
 				</div>
