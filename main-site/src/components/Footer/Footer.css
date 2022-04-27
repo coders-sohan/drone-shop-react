@@ -1,0 +1,14 @@
+.footer-sec {
+  background: url("https://drone-shop-react.netlify.app/bg3.webp");
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+@media (min-width: 375px) {
+  .footer-sec {
+    background-position: left center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+}
