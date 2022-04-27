@@ -72,15 +72,17 @@ const Footer = () => {
               <ul className="social-list">
                 {socialLinks.map((socialLink, index) => (
                   <li key={socialLink.name + index}>
-                    <Link
+                    <a
                       className="text-black hover:text-red-600 transition-all ease-linear flex items-center"
-                      to={socialLink.path}
+                      href={socialLink.path}
+                      target="_blank"
+                      rel="noreferrer"
                     >
                       <span className="mr-5 mt-[1px]">
                         <i className={socialLink.iconClassName}></i>
                       </span>
                       <span>{socialLink.name}</span>
-                    </Link>
+                    </a>
                   </li>
                 ))}
               </ul>
