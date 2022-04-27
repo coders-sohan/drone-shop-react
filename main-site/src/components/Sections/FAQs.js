@@ -224,7 +224,7 @@ const FAQs = () => {
                 )}
               </div>
               <div
-                className="bg-white shadow rounded p-8 cursor-pointer mt-8 cursor-pointer"
+                className="bg-white shadow rounded p-8 cursor-pointer mt-8"
                 onClick={() => setBox4(!box4)}
               >
                 <div className="flex items-center justify-between">
