@@ -5,10 +5,26 @@
   background-repeat: no-repeat;
 }
 
+.footer-list,
+.social-list > li:last-child {
+  margin-bottom: 0;
+}
+
+.footer-list > li {
+  list-style: circle;
+  margin-left: 15px;
+  padding: 0;
+  margin-bottom: 20px;
+}
+
+.social-list > li {
+  margin-left: 15px;
+  padding: 0;
+  margin-bottom: 20px;
+}
+
 @media (min-width: 375px) {
   .footer-sec {
-    background-position: left center;
-    background-repeat: no-repeat;
     background-size: cover;
   }
 }
