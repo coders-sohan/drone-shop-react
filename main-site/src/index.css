@@ -3,45 +3,52 @@
 @tailwind utilities;
 
 @layer base {
-	li {
-		@apply p-4;
-	}
-	button {
-		@apply text-white border rounded-lg;
-	}
+  li {
+    @apply p-4;
+  }
+  button {
+    @apply text-white border rounded-lg;
+  }
 }
+/* .tooltip {
+  @apply invisible absolute;
+}
+
+.has-tooltip:hover .tooltip {
+  @apply visible z-50;
+} */
 
 @import url("https://fonts.googleapis.com/css2?family=Work+Sans:wght@100;200;300;400;500;600;700;800;900&display=swap");
 
 * {
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 ::after,
 ::before {
-	box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 ::-webkit-scrollbar {
-	width: 9px;
-	background: linear-gradient(#d4d4d4, #f6f6ff);
+  width: 9px;
+  background: linear-gradient(#d4d4d4, #f6f6ff);
 }
 
 ::-webkit-scrollbar-thumb {
-	background: linear-gradient(#ffa9a9, #ff5b5b, #d72424);
-	border-radius: 0 0 10px 10px;
+  background: linear-gradient(#ffa9a9, #ff5b5b, #d72424);
+  border-radius: 0 0 10px 10px;
 }
 
 ::selection {
-	background-color: rgba(215, 36, 36, 0.5);
+  background-color: rgba(215, 36, 36, 0.5);
 }
 
 body {
-	overflow-x: hidden;
-	font-family: "Work Sans", sans-serif;
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
-	color: #070f22;
+  overflow-x: hidden;
+  font-family: "Work Sans", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: #070f22;
 }
