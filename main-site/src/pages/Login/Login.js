@@ -1,9 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Footer from "../../components/Footer/Footer";
 import Navbar from "../../components/Navbar/Navbar";
 
 const Login = () => {
+  const [loginData, setloginData] = useState({});
+
+  const handleOnBlur = (e) => {
+    const field = e.target.name;
+    const value = e.target.value;
+    const newLoginData = { ...loginData };
+    newLoginData[field] = value;
+    setloginData(newLoginData);
+    console.log(newLoginData);
+  };
+
+  const handleLoginSubmite = (e) => {
+    alert("submitted");
+    e.preventDefault();
+  };
+
   return (
     <>
       <Navbar />
@@ -15,7 +31,7 @@ const Login = () => {
             </h1>
             <div className="mb-10 mt-2 h-1 w-28 bg-red-500"></div>
             <div>
-              <form>
+              <form onSubmit={handleLoginSubmite}>
                 <div className="mb-6">
                   <label
                     htmlFor="email"
@@ -26,6 +42,8 @@ const Login = () => {
                   <input
                     type="email"
                     id="email"
+                    name="email"
+                    onBlur={handleOnBlur}
                     className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5"
                     required
                   />
@@ -40,6 +58,8 @@ const Login = () => {
                   <input
                     type="password"
                     id="password"
+                    name="password"
+                    onBlur={handleOnBlur}
                     className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5"
                     required
                   />
