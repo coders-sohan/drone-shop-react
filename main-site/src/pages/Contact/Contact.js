@@ -70,7 +70,7 @@ const Contact = () => {
                   Dean Boulevard, Ohio
                 </p>
                 <Link to="/shop">
-                  <p className="text-white pt-16 font-bold tracking-wide underline">
+                  <p className="text-white pt-6 font-bold tracking-wide underline">
                     Go to shop page
                   </p>
                 </Link>
