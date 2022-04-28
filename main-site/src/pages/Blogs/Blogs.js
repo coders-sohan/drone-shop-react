@@ -7,7 +7,7 @@ const Blogs = () => {
   return (
     <>
       <Navbar />
-      <div className="flex justify-between items-center py-12">
+      <div className="flex justify-between items-center py-12 h-[80vh]">
         <div className="container mx-auto px-3">
           <div className="pt-16">
             <h1 className="text-4xl">Blogs Will be added soon</h1>
