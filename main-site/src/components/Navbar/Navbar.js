@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { AiOutlineMenu, AiOutlineCloseCircle } from "react-icons/ai";
+import React, {  useState } from "react";
+import { AiOutlineCloseCircle, AiOutlineMenu } from "react-icons/ai";
 import { NavLink } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 
@@ -8,9 +8,9 @@ const Navbar = () => {
   const [tooltipStatus2, setTooltipStatus2] = useState(0);
   const [nav, setNav] = useState(false);
   const handleToggle = () => setNav(!nav);
-
+  
   const { user, logout } = useAuth();
-
+  
   const current = new Date();
 
   return (
@@ -105,7 +105,7 @@ const Navbar = () => {
                         <div>
                           <span>{user?.email.slice(0, 5)}...</span>
                         </div>
-                        {tooltipStatus == 1 && (
+                        {tooltipStatus === 1 && (
                           <div
                             role="tooltip"
                             className="z-20 -mb-20 w-auto absolute transition duration-300 ease-in-out left-0 shadow-lg p-2 bg-gray-700 border rounded"
@@ -127,10 +127,10 @@ const Navbar = () => {
                             current.getMonth() + 1
                           }/${current.getFullYear()}`}</span>
                         </div>
-                        {tooltipStatus2 == 1 && (
+                        {tooltipStatus2 === 1 && (
                           <div
                             role="tooltip"
-                            className="z-20 -mb-20 w-96 absolute transition duration-300 ease-in-out left-0 shadow-lg p-2 bg-gray-700 border rounded"
+                            className="z-20 -mb-20 w-auto absolute transition duration-300 ease-in-out left-0 shadow-lg p-2 bg-gray-700 border rounded"
                           >
                             <p className="text-sm text-white">{Date()}</p>
                           </div>
