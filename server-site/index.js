@@ -39,6 +39,7 @@ async function run() {
 			const id = req.params.id;
 			const query = { _id: ObjectId(id) };
 			const dataDetails = await dataCollection.findOne(query);
+			console.log(dataDetails);
 			res.send(dataDetails);
 		});
 
