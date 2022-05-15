@@ -1,10 +1,13 @@
 import {
 	createUserWithEmailAndPassword,
 	getAuth,
+	GoogleAuthProvider,
 	onAuthStateChanged,
 	sendPasswordResetEmail,
 	signInWithEmailAndPassword,
+	signInWithPopup,
 	signOut,
+	updateProfile,
 } from "firebase/auth";
 import { useEffect, useState } from "react";
 import initializeFirebase from "../components/Firebase/Firebase.init";
@@ -18,16 +21,33 @@ const useFirebase = () => {
 	const [error, setError] = useState("");
 
 	const auth = getAuth();
+	const googleProvider = new GoogleAuthProvider();
 
 	// register user
-	const registerUser = (email, password, location, navigate) => {
+	const registerUser = (email, password, usersName, navigate) => {
 		setIsLoading(true);
 		createUserWithEmailAndPassword(auth, email, password)
 			.then((userCredential) => {
 				// Signed in
 				// const user = userCredential.user;
-				const destination = location?.state?.from || "/";
-				navigate(destination);
+				// start update users name
+				const newUser = {
+					email,
+					displayName: usersName,
+				};
+				setUser(newUser);
+				updateProfile(auth.currentUser, {
+					displayName: usersName,
+					photoURL:
+						"https://images.pexels.com/photos/941693/pexels-photo-941693.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+				})
+					.then(() => {})
+					.catch((error) => {
+						setError(error.message);
+					});
+				navigate("/");
+				// end update users name
+				setError("");
 			})
 			.catch((error) => {
 				setError(error.message);
@@ -44,6 +64,23 @@ const useFirebase = () => {
 				// const user = userCredential.user;
 				const destination = location?.state?.from || "/";
 				navigate(destination);
+				setError("");
+			})
+			.catch((error) => {
+				setError(error.message);
+			})
+			.finally(() => setIsLoading(false));
+	};
+
+	// Sign In with google
+	const signInWithGoogle = (location, navigate) => {
+		setIsLoading(true);
+		signInWithPopup(auth, googleProvider)
+			.then((result) => {
+				const user = result.user;
+				const destination = location?.state?.from || "/";
+				navigate(destination);
+				setError("");
 			})
 			.catch((error) => {
 				setError(error.message);
@@ -60,6 +97,7 @@ const useFirebase = () => {
 				// ..
 				const destination = location?.state?.from || "/";
 				navigate(destination);
+				setError("");
 			})
 			.catch((error) => {
 				setError(error.message);
@@ -88,6 +126,7 @@ const useFirebase = () => {
 		signOut(auth)
 			.then(() => {
 				// Sign-out successful.
+				setError("");
 			})
 			.catch((error) => {
 				// An error happened.
@@ -102,6 +141,7 @@ const useFirebase = () => {
 		error,
 		registerUser,
 		loginUser,
+		signInWithGoogle,
 		resetPassword,
 		logout,
 	};

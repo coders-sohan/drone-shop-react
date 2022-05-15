@@ -7,6 +7,7 @@ import Contact from "./pages/Contact/Contact";
 import ErrorPage from "./pages/ErrorPage/ErrorPage";
 import Home from "./pages/Home/Home";
 import Login from "./pages/Login/Login";
+import ProductDetails from "./pages/ProductDetails/ProductDetails";
 import Register from "./pages/Register/Register";
 import Shop from "./pages/Shop/Shop";
 
@@ -16,21 +17,26 @@ function App() {
 			<AuthProvider>
 				<BrowserRouter>
 					<Routes>
-						<Route path="/" element={<Home />} />
-						<Route path="/home" element={<Home />} />
-						<Route path="/about" element={<About />} />
+						<Route index element={<Home />} />
+						<Route path="home" element={<Home />} />
+						<Route path="about" element={<About />} />
 						<Route
-							path="/shop"
+							path="shop"
 							element={
 								<PrivateRoute>
 									<Shop />
 								</PrivateRoute>
 							}
 						/>
-						<Route path="/blogs" element={<Blogs />} />
-						<Route path="/contact" element={<Contact />} />
-						<Route path="/login" element={<Login />} />
-						<Route path="/register" element={<Register />} />
+						<Route
+							path="product/:productId"
+							element={<ProductDetails />}
+							exact
+						/>
+						<Route path="blogs" element={<Blogs />} />
+						<Route path="contact" element={<Contact />} />
+						<Route path="login" element={<Login />} />
+						<Route path="register" element={<Register />} />
 						<Route path="*" element={<ErrorPage />} />
 					</Routes>
 				</BrowserRouter>

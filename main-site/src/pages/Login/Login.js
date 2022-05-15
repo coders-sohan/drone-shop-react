@@ -8,9 +8,10 @@ import Spinner from "../../contexts/Spinner/Spinner";
 import useAuth from "../../hooks/useAuth";
 
 const Login = () => {
-	const [loginData, setloginData] = useState({});
+	const [logInData, setLogInData] = useState({});
 
-	const { user, loginUser, resetPassword, isLoading, error } = useAuth();
+	const { user, loginUser, signInWithGoogle, resetPassword, isLoading, error } =
+		useAuth();
 
 	const location = useLocation();
 	const navigate = useNavigate();
@@ -18,18 +19,22 @@ const Login = () => {
 	const handleOnBlur = (e) => {
 		const field = e.target.name;
 		const value = e.target.value;
-		const newLoginData = { ...loginData };
-		newLoginData[field] = value;
-		setloginData(newLoginData);
+		const newLogInData = { ...logInData };
+		newLogInData[field] = value;
+		setLogInData(newLogInData);
 	};
 
-	const handleLoginSubmite = (e) => {
-		loginUser(loginData.email, loginData.password, location, navigate);
+	const handleLoginSubmit = (e) => {
+		loginUser(logInData.email, logInData.password, location, navigate);
 		e.preventDefault();
 	};
 
-	const handleForgotpassword = () => {
-		resetPassword(loginData.email, location, navigate);
+	const handleSignInWithGoogle = () => {
+		signInWithGoogle(location, navigate);
+	};
+
+	const handleForgotPassword = () => {
+		resetPassword(logInData.email, location, navigate);
 	};
 
 	return (
@@ -48,7 +53,7 @@ const Login = () => {
 						{error && <ErrorAlert error={error} />}
 						{!isLoading && (
 							<div className="mt-5">
-								<form onSubmit={handleLoginSubmite}>
+								<form onSubmit={handleLoginSubmit}>
 									<div className="mb-6">
 										<label
 											htmlFor="email"
@@ -85,7 +90,7 @@ const Login = () => {
 										<p>
 											Forgot password?{" "}
 											<Link
-												onClick={handleForgotpassword}
+												onClick={handleForgotPassword}
 												to="/login"
 												className="text-red-600 hover:text-yellow-600 transition-all ease-linear"
 											>
@@ -101,7 +106,10 @@ const Login = () => {
 									</button>
 								</form>
 								<p className="py-3 text-lg">or</p>
-								<button className="border-gray-700 bg-gray-700 hover:bg-slate-800 px font-medium rounded-lg text-sm sm:w-auto px-5 py-2.5 text-center transition-all ease-linear flex items-center">
+								<button
+									onClick={handleSignInWithGoogle}
+									className="border-gray-700 bg-gray-700 hover:bg-slate-800 px font-medium rounded-lg text-sm sm:w-auto px-5 py-2.5 text-center transition-all ease-linear flex items-center"
+								>
 									<span>Google Sign In</span>{" "}
 									<span className="ml-3">
 										<svg

@@ -3,7 +3,7 @@ import Rating from "react-rating";
 import { Link } from "react-router-dom";
 
 const SingleProducts = (props) => {
-	const { imgUrl, name, desc, price, stock, rating } = props.product;
+	const { _id, imgUrl, name, desc, price, stock, rating } = props.product;
 
 	return (
 		<>
@@ -39,7 +39,7 @@ const SingleProducts = (props) => {
 						</div>
 						<div className="mt-10 text-center">
 							<Link
-								to="/shop"
+								to={`/product/${_id}`}
 								className="text-base capitalize px-4 py-1 border text-red-600 border-red-600 rounded-full hover:text-black hover:bg-transparent hover:border-black transition-all duration-300 lg:mr-3 mr-0"
 							>
 								Add to cart
