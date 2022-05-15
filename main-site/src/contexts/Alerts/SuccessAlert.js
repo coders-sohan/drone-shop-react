@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-const SuccessAlert = ({ user }) => {
+const SuccessAlert = ({ user, login, register }) => {
 	// notify start
 	const [show, setShow] = useState(true);
 
@@ -23,7 +23,6 @@ const SuccessAlert = ({ user }) => {
 
 	// notify end
 
-	// { login, register }
 	return (
 		<>
 			<div className="mt-5 flex w-full max-w-sm overflow-hidden bg-white rounded-lg shadow-md border border-green-500">
@@ -41,9 +40,8 @@ const SuccessAlert = ({ user }) => {
 					<div className="mx-3">
 						<span className="font-semibold text-green-500">Success</span>
 						<p className="text-sm text-gray-600">
-							{/* {!login && "Your account was registered!"}
-          {!register && "User login successfully"} */}
-							{user?.email} login successfully
+							{!login && `${user?.email} is registered now!`}
+							{!register && `${user?.email} login successfully`}
 						</p>
 					</div>
 				</div>

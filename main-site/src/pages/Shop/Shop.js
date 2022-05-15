@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Footer from "../../components/Footer/Footer";
 import Navbar from "../../components/Navbar/Navbar";
 import SingleProducts from "../../components/Sections/SingleProducts";
-import Spinner from "../../contexts/Spinner/Spineer";
+import Spinner from "../../contexts/Spinner/Spinner";
 import useAuth from "../../hooks/useAuth";
 
 const Shop = () => {

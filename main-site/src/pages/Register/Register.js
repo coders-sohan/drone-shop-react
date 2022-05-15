@@ -4,7 +4,7 @@ import Footer from "../../components/Footer/Footer";
 import Navbar from "../../components/Navbar/Navbar";
 import ErrorAlert from "../../contexts/Alerts/ErrorAlert";
 import SuccessAlert from "../../contexts/Alerts/SuccessAlert";
-import Spinner from "../../contexts/Spinner/Spineer";
+import Spinner from "../../contexts/Spinner/Spinner";
 import useAuth from "../../hooks/useAuth";
 
 const Register = () => {
@@ -39,7 +39,7 @@ const Register = () => {
               Let's <span className="text-red-500">Sign</span> up
             </h1>
             <div className="mb-5 mt-2 h-1 w-28 bg-red-500"></div>
-            {user?.email && <SuccessAlert />}
+            {user?.email && <SuccessAlert user={user} login={false} register={true} />}
             {error && <ErrorAlert error={error} />}
             {!isLoading && (
               <div className="mt-5">
