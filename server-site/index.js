@@ -35,12 +35,12 @@ async function run() {
 		});
 
 		// get single data
-		// app.get("/products/:id", async (req, res) => {
-		// 	const id = req.params.id;
-		// 	const query = { _id: ObjectId(id) };
-		// 	const dataDetails = await dataCollection.findOne(query);
-		// 	res.send(dataDetails);
-		// });
+		app.get("/product/:id", async (req, res) => {
+			const id = req.params.id;
+			const query = { _id: ObjectId(id) };
+			const dataDetails = await dataCollection.findOne(query);
+			res.send(dataDetails);
+		});
 
 		console.log("db connected");
 	} finally {
