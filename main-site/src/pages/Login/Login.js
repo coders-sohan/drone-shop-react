@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import Footer from "../../components/Footer/Footer";
 import Navbar from "../../components/Navbar/Navbar";
 import ErrorAlert from "../../contexts/Alerts/ErrorAlert";
@@ -12,6 +12,9 @@ const Login = () => {
 
 	const { user, loginUser, resetPassword, isLoading, error } = useAuth();
 
+	const location = useLocation();
+	const navigate = useNavigate();
+
 	const handleOnBlur = (e) => {
 		const field = e.target.name;
 		const value = e.target.value;
@@ -21,12 +24,12 @@ const Login = () => {
 	};
 
 	const handleLoginSubmite = (e) => {
-		loginUser(loginData.email, loginData.password);
+		loginUser(loginData.email, loginData.password, location, navigate);
 		e.preventDefault();
 	};
 
 	const handleForgotpassword = () => {
-		resetPassword(loginData.email);
+		resetPassword(loginData.email, location, navigate);
 	};
 
 	return (
