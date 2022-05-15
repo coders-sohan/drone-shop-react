@@ -18,7 +18,6 @@ const Login = () => {
     const newLoginData = { ...loginData };
     newLoginData[field] = value;
     setloginData(newLoginData);
-    console.log(newLoginData);
   };
 
   const handleLoginSubmite = (e) => {

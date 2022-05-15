@@ -1,4 +1,5 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 import AuthProvider from "./contexts/AuthProvider/AuthProvider";
 import About from "./pages/About/About";
 import Blogs from "./pages/Blogs/Blogs";
@@ -10,25 +11,32 @@ import Register from "./pages/Register/Register";
 import Shop from "./pages/Shop/Shop";
 
 function App() {
-  return (
-    <>
-      <AuthProvider>
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/home" element={<Home />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/shop" element={<Shop />} />
-            <Route path="/blogs" element={<Blogs />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/register" element={<Register />} />
-            <Route path="*" element={<ErrorPage />} />
-          </Routes>
-        </BrowserRouter>
-      </AuthProvider>
-    </>
-  );
+	return (
+		<>
+			<AuthProvider>
+				<BrowserRouter>
+					<Routes>
+						<Route path="/" element={<Home />} />
+						<Route path="/home" element={<Home />} />
+						<Route path="/about" element={<About />} />
+						<Route
+							path="/shop"
+							element={
+								<PrivateRoute>
+									<Shop />
+								</PrivateRoute>
+							}
+						/>
+						<Route path="/blogs" element={<Blogs />} />
+						<Route path="/contact" element={<Contact />} />
+						<Route path="/login" element={<Login />} />
+						<Route path="/register" element={<Register />} />
+						<Route path="*" element={<ErrorPage />} />
+					</Routes>
+				</BrowserRouter>
+			</AuthProvider>
+		</>
+	);
 }
 
 export default App;
