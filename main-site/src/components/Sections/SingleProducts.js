@@ -1,6 +1,6 @@
 import React from "react";
 import Rating from "react-rating";
-import { Link } from "react-router-dom";
+import { HashLink } from "react-router-hash-link";
 
 const SingleProducts = (props) => {
 	const { _id, imgUrl, name, desc, price, stock, rating } = props.product;
@@ -38,12 +38,13 @@ const SingleProducts = (props) => {
 							<h3 className="text-red-600 text-xl font-semibold">${price}</h3>
 						</div>
 						<div className="mt-10 text-center">
-							<Link
-								to={`/product/${_id}`}
+							<HashLink
+								smooth
+								to={`/product/details/${_id}#home`}
 								className="text-base capitalize px-4 py-1 border text-red-600 border-red-600 rounded-full hover:text-black hover:bg-transparent hover:border-black transition-all duration-300 lg:mr-3 mr-0"
 							>
-								Add to cart
-							</Link>
+								product details
+							</HashLink>
 						</div>
 					</div>
 				</div>

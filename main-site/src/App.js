@@ -29,7 +29,7 @@ function App() {
 							}
 						/>
 						<Route
-							path="product/:productId"
+							path="product/details/:productId"
 							element={<ProductDetails />}
 							exact
 						/>
