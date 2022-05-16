@@ -7,6 +7,7 @@ const port = process.env.PORT || 5000;
 
 app.use(cors());
 app.use(express.json());
+const objectId = require("mongodb").ObjectId;
 
 const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.zajjr.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`;
 const client = new MongoClient(uri, {
@@ -14,6 +15,7 @@ const client = new MongoClient(uri, {
 	useUnifiedTopology: true,
 	serverApi: ServerApiVersion.v1,
 });
+
 
 client.connect((err) => {
 	// const collection = client.db("test").collection("devices");
@@ -35,12 +37,12 @@ async function run() {
 		});
 
 		// get single data
-		app.get("/product/:id", async (req, res) => {
+		app.get("/products/:id", async (req, res) => {
 			const id = req.params.id;
-			const query = { _id: ObjectId(id) };
+			const query = { _id: objectId(id) };
 			const dataDetails = await dataCollection.findOne(query);
-			console.log(dataDetails);
-			res.send(dataDetails);
+			console.log(id);
+			res.json(dataDetails);
 		});
 
 		console.log("db connected");
