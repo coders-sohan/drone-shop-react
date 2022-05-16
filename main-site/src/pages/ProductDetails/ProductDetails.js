@@ -43,10 +43,11 @@ const ProductDetails = () => {
 											{singleProduct.name}
 										</h2>
 										<p className="text-sm text-gray-600 pl-5">
-											Available piece{" "}
+											Available{" "}
 											<span className="text-green-500">
 												{singleProduct.stock}
-											</span>
+											</span>{" "}
+											piece
 										</p>
 									</div>
 									<p className="text-base text-gray-600 mt-2 text-justify">
