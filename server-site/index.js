@@ -36,26 +36,36 @@ async function run() {
 			res.send(data);
 		});
 
-		// post add to cart data
+		// post cart data
 		app.post("/cart", async (req, res) => {
 			const data = req.body;
 			const cart = await cartCollection.insertOne(data);
 			res.json(cart);
 		});
 
-		// get all add to cart data
+		// get all cart data
 		app.get("/cart", async (req, res) => {
-			const cursor = cartCollection.find({});
+			const email = req.query.email;
+			const query = { email: email };
+			const cursor = cartCollection.find(query);
 			const data = await cursor.toArray();
 			res.send(data);
 		});
 
-		// get single data
+		// get single product data
 		app.get("/products/:id", async (req, res) => {
 			const id = req.params.id;
 			const query = { _id: objectId(id) };
 			const dataDetails = await dataCollection.findOne(query);
 			res.json(dataDetails);
+		});
+
+		// delete single product data
+		app.delete("/products/:id", async (req, res) => {
+			const id = req.params.id;
+			const query = { _id: ObjectId(id) };
+			const result = await dataCollection.deleteOne(query);
+			res.json(result);
 		});
 
 		console.log("db connected");

@@ -5,8 +5,11 @@ import { HashLink } from "react-router-hash-link";
 import swal from "sweetalert";
 import Footer from "../../components/Footer/Footer";
 import Navbar from "../../components/Navbar/Navbar";
+import useAuth from "../../hooks/useAuth";
 
 const ProductDetails = () => {
+	const { user } = useAuth();
+
 	const { productId } = useParams();
 	const [singleProduct, setSingleProduct] = useState([]);
 
@@ -16,13 +19,19 @@ const ProductDetails = () => {
 			.then((data) => setSingleProduct(data));
 	}, [productId]);
 
+	const addToCartProduct = {
+		...singleProduct,
+		email: user?.email,
+	};
+
 	const addToCart = () => {
-		fetch("http://localhost:5000/cart", {
+		// sent to server
+		fetch("https://drone-shop-react.herokuapp.com/cart", {
 			method: "POST",
 			headers: {
 				"content-type": "application/json",
 			},
-			body: JSON.stringify(singleProduct),
+			body: JSON.stringify(addToCartProduct),
 		})
 			.then((res) => res.json())
 			.then((data) => {

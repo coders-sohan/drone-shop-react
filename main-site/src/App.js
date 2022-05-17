@@ -44,14 +44,29 @@ function App() {
 							}
 							exact
 						/>
-						<Route path="/dashboard" element={<PrivateRoute><Dashboard /></PrivateRoute>}>
-                <Route exact path="/dashboard" element={<DashboardHome/>} />
-                <Route exact path="/dashboard/all-products" element={<AllProducts/>} />
-                <Route exact path="/dashboard/add-product" element={<AddProduct/>} />
-                <Route exact path="/dashboard/cart" element={<Cart/>} />
-                <Route exact path="/dashboard/setting" element={<Setting/>} />
-                <Route exact path="/dashboard/checkout" element={<Payment />} />
-            </Route>
+						<Route
+							path="/dashboard"
+							element={
+								<PrivateRoute>
+									<Dashboard />
+								</PrivateRoute>
+							}
+						>
+							<Route exact path="/dashboard" element={<DashboardHome />} />
+							<Route
+								exact
+								path="/dashboard/all-products"
+								element={<AllProducts />}
+							/>
+							<Route
+								exact
+								path="/dashboard/add-product"
+								element={<AddProduct />}
+							/>
+							<Route exact path="/dashboard/cart" element={<Cart />} />
+							<Route exact path="/dashboard/setting" element={<Setting />} />
+							<Route exact path="/dashboard/checkout" element={<Payment />} />
+						</Route>
 						<Route path="blogs" element={<Blogs />} exact />
 						<Route path="contact" element={<Contact exact />} />
 						<Route path="login" element={<Login />} exact />
