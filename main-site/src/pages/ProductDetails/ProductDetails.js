@@ -95,7 +95,7 @@ const ProductDetails = () => {
 										</h2>
 									</div>
 									<div className="mt-8 text-center">
-										<HashLink to="/cart#home">
+										<HashLink to="/dashboard/cart#home">
 											<button
 												onClick={addToCart}
 												className="text-base capitalize px-4 py-1 border text-red-600 border-red-600 rounded-full hover:text-black hover:bg-transparent hover:border-black transition-all duration-300 lg:mr-3 mr-0"
