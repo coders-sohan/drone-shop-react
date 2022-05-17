@@ -43,6 +43,13 @@ async function run() {
 			res.json(cart);
 		});
 
+		// get all add to cart data
+		app.get("/cart", async (req, res) => {
+			const cursor = cartCollection.find({});
+			const data = await cursor.toArray();
+			res.send(data);
+		});
+
 		// get single data
 		app.get("/products/:id", async (req, res) => {
 			const id = req.params.id;
