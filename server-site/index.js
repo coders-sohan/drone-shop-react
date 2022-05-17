@@ -16,7 +16,6 @@ const client = new MongoClient(uri, {
 	serverApi: ServerApiVersion.v1,
 });
 
-
 client.connect((err) => {
 	// const collection = client.db("test").collection("devices");
 	// // perform actions on the collection object
@@ -28,6 +27,7 @@ async function run() {
 		await client.connect();
 		const database = client.db("DroneShop");
 		const dataCollection = database.collection("products");
+		const cartCollection = database.collection("AddToCart");
 
 		// get all data
 		app.get("/products", async (req, res) => {
@@ -36,12 +36,18 @@ async function run() {
 			res.send(data);
 		});
 
+		// post add to cart data
+		app.post("/cart", async (req, res) => {
+			const data = req.body;
+			const cart = await cartCollection.insertOne(data);
+			res.json(cart);
+		});
+
 		// get single data
 		app.get("/products/:id", async (req, res) => {
 			const id = req.params.id;
 			const query = { _id: objectId(id) };
 			const dataDetails = await dataCollection.findOne(query);
-			console.log(id);
 			res.json(dataDetails);
 		});
 

@@ -3,6 +3,7 @@ import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 import AuthProvider from "./contexts/AuthProvider/AuthProvider";
 import About from "./pages/About/About";
 import Blogs from "./pages/Blogs/Blogs";
+import Cart from "./pages/Cart/Cart";
 import Contact from "./pages/Contact/Contact";
 import ErrorPage from "./pages/ErrorPage/ErrorPage";
 import Home from "./pages/Home/Home";
@@ -17,9 +18,9 @@ function App() {
 			<AuthProvider>
 				<BrowserRouter>
 					<Routes>
-						<Route index element={<Home />} />
-						<Route path="home" element={<Home />} />
-						<Route path="about" element={<About />} />
+						<Route index element={<Home />} exact />
+						<Route path="home" element={<Home />} exact />
+						<Route path="about" element={<About />} exact />
 						<Route
 							path="shop"
 							element={
@@ -30,14 +31,27 @@ function App() {
 						/>
 						<Route
 							path="product/details/:productId"
-							element={<ProductDetails />}
+							element={
+								<PrivateRoute>
+									<ProductDetails />
+								</PrivateRoute>
+							}
 							exact
 						/>
-						<Route path="blogs" element={<Blogs />} />
-						<Route path="contact" element={<Contact />} />
-						<Route path="login" element={<Login />} />
-						<Route path="register" element={<Register />} />
-						<Route path="*" element={<ErrorPage />} />
+						<Route
+							path="cart"
+							element={
+								<PrivateRoute>
+									<Cart />
+								</PrivateRoute>
+							}
+							exact
+						/>
+						<Route path="blogs" element={<Blogs />} exact />
+						<Route path="contact" element={<Contact exact />} />
+						<Route path="login" element={<Login />} exact />
+						<Route path="register" element={<Register />} exact />
+						<Route path="*" element={<ErrorPage />} exact />
 					</Routes>
 				</BrowserRouter>
 			</AuthProvider>

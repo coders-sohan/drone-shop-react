@@ -1,17 +1,37 @@
 import React, { useEffect, useState } from "react";
 import Rating from "react-rating";
 import { useParams } from "react-router-dom";
+import { HashLink } from "react-router-hash-link";
+import swal from "sweetalert";
 import Footer from "../../components/Footer/Footer";
 import Navbar from "../../components/Navbar/Navbar";
 
 const ProductDetails = () => {
 	const { productId } = useParams();
 	const [singleProduct, setSingleProduct] = useState([]);
+
 	useEffect(() => {
 		fetch(`https://drone-shop-react.herokuapp.com/products/${productId}`)
 			.then((res) => res.json())
 			.then((data) => setSingleProduct(data));
 	}, [productId]);
+
+	const addToCart = () => {
+		fetch("http://localhost:5000/cart", {
+			method: "POST",
+			headers: {
+				"content-type": "application/json",
+			},
+			body: JSON.stringify(singleProduct),
+		})
+			.then((res) => res.json())
+			.then((data) => {
+				if (data.insertedId) {
+					swal("Good job!", "Add to cart successfully", "success");
+				}
+			});
+		console.log("cart added submitted");
+	};
 
 	return (
 		<>
@@ -75,10 +95,15 @@ const ProductDetails = () => {
 										</h2>
 									</div>
 									<div className="mt-8 text-center">
-										<button className="text-base capitalize px-4 py-1 border text-red-600 border-red-600 rounded-full hover:text-black hover:bg-transparent hover:border-black transition-all duration-300 lg:mr-3 mr-0">
-											add to cart
-										</button>
-										<button className="text-base capitalize px-4 py-1 border text-red-600 border-red-600 rounded-full hover:text-black hover:bg-transparent hover:border-black transition-all duration-300 lg:mr-3 mr-0">
+										<HashLink to="/cart#home">
+											<button
+												onClick={addToCart}
+												className="text-base capitalize px-4 py-1 border text-red-600 border-red-600 rounded-full hover:text-black hover:bg-transparent hover:border-black transition-all duration-300 lg:mr-3 mr-0"
+											>
+												add to cart
+											</button>
+										</HashLink>
+										<button className="text-base capitalize px-4 py-1 border text-red-600 border-red-600 rounded-full hover:text-black hover:bg-transparent hover:border-black transition-all duration-300 lg:mr-3 mr-0 ml-2">
 											buy now
 										</button>
 									</div>
