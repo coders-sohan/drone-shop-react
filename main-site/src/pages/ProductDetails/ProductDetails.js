@@ -14,19 +14,26 @@ const ProductDetails = () => {
 	const [singleProduct, setSingleProduct] = useState([]);
 
 	useEffect(() => {
-		fetch(`https://drone-shop-react.herokuapp.com/products/${productId}`)
+		fetch(`http://localhost:5000/products/${productId}`)
 			.then((res) => res.json())
 			.then((data) => setSingleProduct(data));
 	}, [productId]);
 
+
+	// add to cart without id
 	const addToCartProduct = {
-		...singleProduct,
+		name: singleProduct?.name,
+		imgUrl: singleProduct?.imgUrl,
+		desc: singleProduct?.desc,
+		price: singleProduct?.price,
+		rating: singleProduct?.rating,
+		stock: singleProduct?.stock,
 		email: user?.email,
 	};
 
 	const addToCart = () => {
 		// sent to server
-		fetch("https://drone-shop-react.herokuapp.com/cart", {
+		fetch(`http://localhost:5000/cart`, {
 			method: "POST",
 			headers: {
 				"content-type": "application/json",

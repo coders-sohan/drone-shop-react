@@ -36,6 +36,22 @@ async function run() {
 			res.send(data);
 		});
 
+		// get single product data
+		app.get("/products/:id", async (req, res) => {
+			const id = req.params.id;
+			const query = { _id: objectId(id) };
+			const dataDetails = await dataCollection.findOne(query);
+			res.json(dataDetails);
+		});
+
+		// delete single product data
+		app.delete("/products/:id", async (req, res) => {
+			const id = req.params.id;
+			const query = { _id: objectId(id) };
+			const result = await dataCollection.deleteOne(query);
+			res.json(result);
+		});
+
 		// post cart data
 		app.post("/cart", async (req, res) => {
 			const data = req.body;
@@ -52,23 +68,15 @@ async function run() {
 			res.send(data);
 		});
 
-		// get single product data
-		app.get("/products/:id", async (req, res) => {
+		// delete single cart data
+		app.delete("/cart/:id", async (req, res) => {
 			const id = req.params.id;
 			const query = { _id: objectId(id) };
-			const dataDetails = await dataCollection.findOne(query);
-			res.json(dataDetails);
-		});
-
-		// delete single product data
-		app.delete("/products/:id", async (req, res) => {
-			const id = req.params.id;
-			const query = { _id: ObjectId(id) };
-			const result = await dataCollection.deleteOne(query);
+			const result = await cartCollection.deleteOne(query);
 			res.json(result);
 		});
 
-		console.log("db connected");
+		console.log("Database connected");
 	} finally {
 		// await client.close();
 	}
@@ -77,9 +85,9 @@ async function run() {
 run().catch(console.dir);
 
 app.get("/", (req, res) => {
-	res.send("running db");
+	res.send("Database is running now");
 });
 
 app.listen(port, () => {
-	console.log("local host running", port);
+	console.log("local host is running", port);
 });

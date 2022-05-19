@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { AiOutlineShoppingCart, AiOutlineUnorderedList,AiOutlineAppstoreAdd } from "react-icons/ai";
+import { AiOutlineAppstoreAdd, AiOutlineShoppingCart, AiOutlineUnorderedList } from "react-icons/ai";
 import { BiHomeAlt } from "react-icons/bi";
 import { GoThreeBars } from "react-icons/go";
 import { IoMdLogOut } from "react-icons/io";
@@ -109,14 +109,14 @@ const Dashboard = () => {
 								</li>
 								<li className="p-2 mt-3">
 									<NavLink
-										to="/"
+										to="/shop"
 										className="text-black flex items-center gap-x-2 lg:px-4 md:px-3 px-2 h-[2.9rem] hover:bg-white hover:text-red-500 rounded-md hover:shadow-md duration-200"
 									>
 										<span>
 											<IoMdLogOut className="text-xl" />
 										</span>
 										<span className={`${!open && "hidden"} origin-left mt-1`}>
-											Back to home
+											Back to shop
 										</span>
 									</NavLink>
 								</li>

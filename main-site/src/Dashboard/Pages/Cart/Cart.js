@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import swal from "sweetalert";
 import useAuth from "../../../hooks/useAuth";
 import SingleCart from "./SingleCart";
 
@@ -9,10 +10,29 @@ const Cart = () => {
 	const [cartData, setCartData] = useState([]);
 
 	useEffect(() => {
-		fetch(`https://drone-shop-react.herokuapp.com/cart?email=${user?.email}`)
+		fetch(`http://localhost:5000/cart?email=${user?.email}`)
 			.then((res) => res.json())
 			.then((data) => setCartData(data));
-	}, [cartData]);
+	}, [user?.email]);
+
+	// delete a cart form all cart
+	const handleDeleteCart = (id) => {
+		const proceed = window.confirm("Are you sure, you want to delete?");
+		if (proceed) {
+			const url = `http://localhost:5000/cart/${id}`;
+			fetch(url, {
+				method: "DELETE",
+			})
+				.then((res) => res.json())
+				.then((data) => {
+					if (data.deletedCount > 0) {
+						swal("Good job!", "Data delete successfully", "success");
+						const remainingCart = cartData.filter((cart) => cart._id !== id);
+						setCartData(remainingCart);
+					}
+				});
+		}
+	};
 
 	return (
 		<>
@@ -27,7 +47,11 @@ const Cart = () => {
 					<div className="w-4/6 mx-auto">
 						<div>
 							{cartData.map((singleCart) => (
-								<SingleCart key={singleCart._id} singleCart={singleCart} />
+								<SingleCart
+									key={singleCart._id}
+									singleCart={singleCart}
+									handleDeleteCart={handleDeleteCart}
+								/>
 							))}
 						</div>
 						<div className="mt-12">

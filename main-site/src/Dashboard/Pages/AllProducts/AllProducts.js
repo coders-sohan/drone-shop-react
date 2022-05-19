@@ -1,14 +1,36 @@
 import React, { useEffect, useState } from "react";
+import swal from "sweetalert";
 import ProductSingleCart from "./ProductSingleCart";
 
 const AllProducts = () => {
 	const [productData, setProductData] = useState([]);
 
 	useEffect(() => {
-		fetch(`https://drone-shop-react.herokuapp.com/products`)
+		fetch(`http://localhost:5000/products`)
 			.then((res) => res.json())
 			.then((data) => setProductData(data));
-	}, [productData]);
+	}, []);
+
+	// delete a product form all product
+	const handleDeleteProduct = (id) => {
+		const proceed = window.confirm("Are you sure, you want to delete?");
+		if (proceed) {
+			const url = `http://localhost:5000/products/${id}`;
+			fetch(url, {
+				method: "DELETE",
+			})
+				.then((res) => res.json())
+				.then((data) => {
+					if (data.deletedCount > 0) {
+						swal("Good job!", "Data delete successfully", "success");
+						const remainingProducts = productData.filter(
+							(products) => products._id !== id
+						);
+						setProductData(remainingProducts);
+					}
+				});
+		}
+	};
 
 	return (
 		<>
@@ -26,6 +48,7 @@ const AllProducts = () => {
 								<ProductSingleCart
 									key={singleProduct._id}
 									singleProduct={singleProduct}
+									handleDeleteProduct={handleDeleteProduct}
 								/>
 							))}
 						</div>
