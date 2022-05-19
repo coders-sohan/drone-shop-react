@@ -36,6 +36,9 @@ const useFirebase = () => {
 					displayName: usersName,
 				};
 				setUser(newUser);
+				// save user to the mongodb database
+				saveUser(email, usersName, "POST");
+				// send name to firebase after account creation
 				updateProfile(auth.currentUser, {
 					displayName: usersName,
 					photoURL:
@@ -77,6 +80,9 @@ const useFirebase = () => {
 		setIsLoading(true);
 		signInWithPopup(auth, googleProvider)
 			.then((result) => {
+				const user = result.user;
+				// save to database
+				saveUser(user.email, user.displayName, "PUT");
 				// const user = result.user;
 				const destination = location?.state?.from || "/";
 				navigate(destination);
@@ -133,6 +139,17 @@ const useFirebase = () => {
 				setError(error.message);
 			})
 			.finally(() => setIsLoading(false));
+	};
+
+	const saveUser = (email, displayName, method) => {
+		const user = { email, displayName };
+		fetch(`http://localhost:5000/users`, {
+			method: method,
+			headers: {
+				"content-type": "application/json",
+			},
+			body: JSON.stringify(user),
+		}).then();
 	};
 
 	return {

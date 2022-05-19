@@ -28,6 +28,7 @@ async function run() {
 		const database = client.db("DroneShop");
 		const dataCollection = database.collection("products");
 		const cartCollection = database.collection("AddToCart");
+		const usersCollection = database.collection("users");
 
 		// get all data
 		app.get("/products", async (req, res) => {
@@ -73,6 +74,23 @@ async function run() {
 			const id = req.params.id;
 			const query = { _id: objectId(id) };
 			const result = await cartCollection.deleteOne(query);
+			res.json(result);
+		});
+
+		//  post user form firebase
+		app.post("/users", async (req, res) => {
+			const user = req.body;
+			const users = await usersCollection.insertOne(user);
+			res.json(users);
+		});
+
+		// update user data
+		app.put("/users", async (req, res) => {
+			const user = req.body;
+			const filter = { email: user.email };
+			const options = { upsert: true };
+			const updateDoc = { $set: user };
+			const result = await usersCollection.updateOne(filter, updateDoc, options);
 			res.json(result);
 		});
 
