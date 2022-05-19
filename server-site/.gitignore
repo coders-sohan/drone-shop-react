@@ -10,8 +10,10 @@
 
 # production
 /build
+drone-shop-react-firebase-adminsdk.json
 
 # misc
+.env
 .DS_Store
 .env.local
 .env.development.local
