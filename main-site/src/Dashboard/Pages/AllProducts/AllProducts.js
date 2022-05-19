@@ -13,23 +13,50 @@ const AllProducts = () => {
 
 	// delete a product form all product
 	const handleDeleteProduct = (id) => {
-		const proceed = window.confirm("Are you sure, you want to delete?");
-		if (proceed) {
-			const url = `http://localhost:5000/products/${id}`;
-			fetch(url, {
-				method: "DELETE",
-			})
-				.then((res) => res.json())
-				.then((data) => {
-					if (data.deletedCount > 0) {
-						swal("Good job!", "Data delete successfully", "success");
-						const remainingProducts = productData.filter(
-							(products) => products._id !== id
-						);
-						setProductData(remainingProducts);
-					}
-				});
-		}
+		swal({
+			title: "Are you sure?",
+			text: "Once deleted, you will not be able to recover this data!",
+			icon: "warning",
+			buttons: true,
+			dangerMode: true,
+		}).then((willDelete) => {
+			if (willDelete) {
+				const url = `http://localhost:5000/products/${id}`;
+				fetch(url, {
+					method: "DELETE",
+				})
+					.then((res) => res.json())
+					.then((data) => {
+						if (data.deletedCount > 0) {
+							swal("Good job!", "Data delete successfully", "success");
+							const remainingProducts = productData.filter(
+								(products) => products._id !== id
+							);
+							setProductData(remainingProducts);
+						}
+					});
+			} else {
+				swal("Your data is safe!");
+			}
+		});
+
+		// const proceed = window.confirm("Are you sure, you want to delete?");
+		// if (proceed) {
+		// 	const url = `http://localhost:5000/products/${id}`;
+		// 	fetch(url, {
+		// 		method: "DELETE",
+		// 	})
+		// 		.then((res) => res.json())
+		// 		.then((data) => {
+		// 			if (data.deletedCount > 0) {
+		// 				swal("Good job!", "Data delete successfully", "success");
+		// 				const remainingProducts = productData.filter(
+		// 					(products) => products._id !== id
+		// 				);
+		// 				setProductData(remainingProducts);
+		// 			}
+		// 		});
+		// }
 	};
 
 	return (

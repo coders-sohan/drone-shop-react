@@ -1,14 +1,21 @@
 import React, { useState } from "react";
-import { AiOutlineAppstoreAdd, AiOutlineShoppingCart, AiOutlineUnorderedList } from "react-icons/ai";
+import {
+	AiOutlineAppstoreAdd,
+	AiOutlineShoppingCart,
+	AiOutlineUnorderedList,
+} from "react-icons/ai";
 import { BiHomeAlt } from "react-icons/bi";
 import { GoThreeBars } from "react-icons/go";
 import { IoMdLogOut } from "react-icons/io";
 import { IoSettingsOutline } from "react-icons/io5";
 import { MdPayment } from "react-icons/md";
 import { NavLink, Outlet } from "react-router-dom";
+import useAuth from "../hooks/useAuth";
 
 const Dashboard = () => {
 	const [open, setOpen] = useState(true);
+
+	const { admin } = useAuth();
 
 	return (
 		<>
@@ -42,32 +49,41 @@ const Dashboard = () => {
 										</span>
 									</NavLink>
 								</li>
-								<li className="p-2 mt-3">
-									<NavLink
-										to="/dashboard/all-products"
-										className="text-black flex items-center gap-x-2 lg:px-4 md:px-3 px-2 h-[2.9rem] hover:bg-white hover:text-red-500 rounded-md hover:shadow-md duration-200"
-									>
-										<span>
-											<AiOutlineUnorderedList className="text-xl" />
-										</span>
-										<span className={`${!open && "hidden"} origin-left mt-1`}>
-											All Products
-										</span>
-									</NavLink>
-								</li>
-								<li className="p-2 mt-3">
-									<NavLink
-										to="/dashboard/add-product"
-										className="text-black flex items-center gap-x-2 lg:px-4 md:px-3 px-2 h-[2.9rem] hover:bg-white hover:text-red-500 rounded-md hover:shadow-md duration-200"
-									>
-										<span>
-											<AiOutlineAppstoreAdd className="text-xl" />
-										</span>
-										<span className={`${!open && "hidden"} origin-left mt-1`}>
-											Add Product
-										</span>
-									</NavLink>
-								</li>
+								{admin && (
+									<>
+										{" "}
+										<li className="p-2 mt-3">
+											<NavLink
+												to="/dashboard/all-products"
+												className="text-black flex items-center gap-x-2 lg:px-4 md:px-3 px-2 h-[2.9rem] hover:bg-white hover:text-red-500 rounded-md hover:shadow-md duration-200"
+											>
+												<span>
+													<AiOutlineUnorderedList className="text-xl" />
+												</span>
+												<span
+													className={`${!open && "hidden"} origin-left mt-1`}
+												>
+													All Products
+												</span>
+											</NavLink>
+										</li>
+										<li className="p-2 mt-3">
+											<NavLink
+												to="/dashboard/add-product"
+												className="text-black flex items-center gap-x-2 lg:px-4 md:px-3 px-2 h-[2.9rem] hover:bg-white hover:text-red-500 rounded-md hover:shadow-md duration-200"
+											>
+												<span>
+													<AiOutlineAppstoreAdd className="text-xl" />
+												</span>
+												<span
+													className={`${!open && "hidden"} origin-left mt-1`}
+												>
+													Add Product
+												</span>
+											</NavLink>
+										</li>
+									</>
+								)}
 								<li className="p-2 mt-3">
 									<NavLink
 										to="/dashboard/cart"
@@ -94,19 +110,21 @@ const Dashboard = () => {
 										</span>
 									</NavLink>
 								</li>
-								<li className="p-2 mt-3">
-									<NavLink
-										to="/dashboard/setting"
-										className="text-black flex items-center gap-x-2 lg:px-4 md:px-3 px-2 h-[2.9rem] hover:bg-white hover:text-red-500 rounded-md hover:shadow-md duration-200"
-									>
-										<span>
-											<IoSettingsOutline className="text-xl" />
-										</span>
-										<span className={`${!open && "hidden"} origin-left mt-1`}>
-											Settings
-										</span>
-									</NavLink>
-								</li>
+								{admin && (
+									<li className="p-2 mt-3">
+										<NavLink
+											to="/dashboard/setting"
+											className="text-black flex items-center gap-x-2 lg:px-4 md:px-3 px-2 h-[2.9rem] hover:bg-white hover:text-red-500 rounded-md hover:shadow-md duration-200"
+										>
+											<span>
+												<IoSettingsOutline className="text-xl" />
+											</span>
+											<span className={`${!open && "hidden"} origin-left mt-1`}>
+												Settings
+											</span>
+										</NavLink>
+									</li>
+								)}
 								<li className="p-2 mt-3">
 									<NavLink
 										to="/shop"

@@ -1,6 +1,7 @@
 import {
 	createUserWithEmailAndPassword,
 	getAuth,
+	getIdToken,
 	GoogleAuthProvider,
 	onAuthStateChanged,
 	sendPasswordResetEmail,
@@ -19,6 +20,8 @@ const useFirebase = () => {
 	const [user, setUser] = useState({});
 	const [isLoading, setIsLoading] = useState(true);
 	const [error, setError] = useState("");
+	const [admin, setAdmin] = useState(false);
+	const [token, setToken] = useState("");
 
 	const auth = getAuth();
 	const googleProvider = new GoogleAuthProvider();
@@ -117,6 +120,9 @@ const useFirebase = () => {
 			if (user) {
 				// User is signed in
 				setUser(user);
+				getIdToken(user).then((idToken) => {
+					setToken(idToken);
+				});
 			} else {
 				// User is signed out
 				setUser({});
@@ -124,7 +130,14 @@ const useFirebase = () => {
 			setIsLoading(false);
 		});
 		return () => unsubscribe;
-	}, []);
+	}, [auth]);
+
+	// get admin from database for authentication
+	useEffect(() => {
+		fetch(`http://localhost:5000/users/${user?.email}`)
+			.then((res) => res.json())
+			.then((data) => setAdmin(data.admin));
+	}, [user?.email]);
 
 	// logout user
 	const logout = () => {
@@ -156,6 +169,8 @@ const useFirebase = () => {
 		user,
 		isLoading,
 		error,
+		admin,
+		token,
 		registerUser,
 		loginUser,
 		signInWithGoogle,

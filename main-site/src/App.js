@@ -1,4 +1,5 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import AdminRoute from "./components/AdminRoute/AdminRoute";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 import AuthProvider from "./contexts/AuthProvider/AuthProvider";
 import Dashboard from "./Dashboard/Dashboard";
@@ -56,15 +57,31 @@ function App() {
 							<Route
 								exact
 								path="/dashboard/all-products"
-								element={<AllProducts />}
+								element={
+									<AdminRoute>
+										<AllProducts />
+									</AdminRoute>
+								}
 							/>
 							<Route
 								exact
 								path="/dashboard/add-product"
-								element={<AddProduct />}
+								element={
+									<AdminRoute>
+										<AddProduct />
+									</AdminRoute>
+								}
 							/>
 							<Route exact path="/dashboard/cart" element={<Cart />} />
-							<Route exact path="/dashboard/setting" element={<Setting />} />
+							<Route
+								exact
+								path="/dashboard/setting"
+								element={
+									<AdminRoute>
+										<Setting />
+									</AdminRoute>
+								}
+							/>
 							<Route exact path="/dashboard/checkout" element={<Payment />} />
 						</Route>
 						<Route path="blogs" element={<Blogs />} exact />

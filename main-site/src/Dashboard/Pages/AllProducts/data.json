@@ -1,0 +1,98 @@
+[
+	{
+		"name": "Smart High Quality Drone 01",
+		"price": 300,
+		"stock": 19,
+		"rating": 5,
+		"imgUrl": "https://drone-shop-react.netlify.app/products/1.webp",
+		"desc": "Essentially, a drone is a flying robot that can be remotely controlled or fly autonomously using software-controlled flight plans in its embedded systems, that work in conjunction with onboard sensors and a global positioning system (GPS). UAVs were most often associated with the military."
+	},
+	{
+		"name": "Smart High Quality Drone 02",
+		"price": 230,
+		"stock": 9,
+		"rating": 4.5,
+		"imgUrl": "https://drone-shop-react.netlify.app/products/2.webp",
+		"desc": "Essentially, a drone is a flying robot that can be remotely controlled or fly autonomously using software-controlled flight plans in its embedded systems, that work in conjunction with onboard sensors and a global positioning system (GPS). UAVs were most often associated with the military."
+	},
+	{
+		"name": "Smart High Quality Drone 03",
+		"price": 330,
+		"stock": 29,
+		"rating": 4.8,
+		"imgUrl": "https://drone-shop-react.netlify.app/products/3.webp",
+		"desc": "Essentially, a drone is a flying robot that can be remotely controlled or fly autonomously using software-controlled flight plans in its embedded systems, that work in conjunction with onboard sensors and a global positioning system (GPS). UAVs were most often associated with the military."
+	},
+	{
+		"name": "Smart High Quality Drone 04",
+		"price": 280,
+		"stock": 5,
+		"rating": 4.4,
+		"imgUrl": "https://drone-shop-react.netlify.app/products/4.webp",
+		"desc": "Essentially, a drone is a flying robot that can be remotely controlled or fly autonomously using software-controlled flight plans in its embedded systems, that work in conjunction with onboard sensors and a global positioning system (GPS). UAVs were most often associated with the military."
+	},
+	{
+		"name": "Smart High Quality Drone 05",
+		"price": 400,
+		"stock": 12,
+		"rating": 5,
+		"imgUrl": "https://drone-shop-react.netlify.app/products/5.webp",
+		"desc": "Essentially, a drone is a flying robot that can be remotely controlled or fly autonomously using software-controlled flight plans in its embedded systems, that work in conjunction with onboard sensors and a global positioning system (GPS). UAVs were most often associated with the military."
+	},
+	{
+		"name": "Smart High Quality Drone 06",
+		"price": 370,
+		"stock": 16,
+		"rating": 4.8,
+		"imgUrl": "https://drone-shop-react.netlify.app/products/6.webp",
+		"desc": "Essentially, a drone is a flying robot that can be remotely controlled or fly autonomously using software-controlled flight plans in its embedded systems, that work in conjunction with onboard sensors and a global positioning system (GPS). UAVs were most often associated with the military."
+	},
+	{
+		"name": "Smart High Quality Drone 07",
+		"price": 220,
+		"stock": 9,
+		"rating": 4.5,
+		"imgUrl": "https://drone-shop-react.netlify.app/products/7.webp",
+		"desc": "Essentially, a drone is a flying robot that can be remotely controlled or fly autonomously using software-controlled flight plans in its embedded systems, that work in conjunction with onboard sensors and a global positioning system (GPS). UAVs were most often associated with the military."
+	},
+	{
+		"name": "Smart High Quality Drone 08",
+		"price": 290,
+		"stock": 9,
+		"rating": 4.7,
+		"imgUrl": "https://drone-shop-react.netlify.app/products/8.webp",
+		"desc": "Essentially, a drone is a flying robot that can be remotely controlled or fly autonomously using software-controlled flight plans in its embedded systems, that work in conjunction with onboard sensors and a global positioning system (GPS). UAVs were most often associated with the military."
+	},
+	{
+		"name": "Smart High Quality Drone 09",
+		"price": 300,
+		"stock": 15,
+		"rating": 4.9,
+		"imgUrl": "https://drone-shop-react.netlify.app/products/9.webp",
+		"desc": "Essentially, a drone is a flying robot that can be remotely controlled or fly autonomously using software-controlled flight plans in its embedded systems, that work in conjunction with onboard sensors and a global positioning system (GPS). UAVs were most often associated with the military."
+	},
+	{
+		"name": "Smart High Quality Drone 10",
+		"price": 300,
+		"stock": 21,
+		"rating": 4.5,
+		"imgUrl": "https://drone-shop-react.netlify.app/products/10.webp",
+		"desc": "Essentially, a drone is a flying robot that can be remotely controlled or fly autonomously using software-controlled flight plans in its embedded systems, that work in conjunction with onboard sensors and a global positioning system (GPS). UAVs were most often associated with the military."
+	},
+	{
+		"name": "Smart High Quality Drone 11",
+		"price": 190,
+		"stock": 9,
+		"rating": 3.8,
+		"imgUrl": "https://drone-shop-react.netlify.app/products/11.webp",
+		"desc": "Essentially, a drone is a flying robot that can be remotely controlled or fly autonomously using software-controlled flight plans in its embedded systems, that work in conjunction with onboard sensors and a global positioning system (GPS). UAVs were most often associated with the military."
+	},
+	{
+		"name": "Smart High Quality Drone 12",
+		"price": 500,
+		"stock": 5,
+		"rating": 5,
+		"imgUrl": "https://drone-shop-react.netlify.app/products/12.webp",
+		"desc": "Essentially, a drone is a flying robot that can be remotely controlled or fly autonomously using software-controlled flight plans in its embedded systems, that work in conjunction with onboard sensors and a global positioning system (GPS). UAVs were most often associated with the military."
+	}
+]
