@@ -6,7 +6,7 @@ const AllProducts = () => {
 	const [productData, setProductData] = useState([]);
 
 	useEffect(() => {
-		fetch(`http://localhost:5000/products`)
+		fetch(`https://drone-shop-react.herokuapp.com/products`)
 			.then((res) => res.json())
 			.then((data) => setProductData(data));
 	}, []);
@@ -21,7 +21,7 @@ const AllProducts = () => {
 			dangerMode: true,
 		}).then((willDelete) => {
 			if (willDelete) {
-				const url = `http://localhost:5000/products/${id}`;
+				const url = `https://drone-shop-react.herokuapp.com/products/${id}`;
 				fetch(url, {
 					method: "DELETE",
 				})
@@ -42,7 +42,7 @@ const AllProducts = () => {
 
 		// const proceed = window.confirm("Are you sure, you want to delete?");
 		// if (proceed) {
-		// 	const url = `http://localhost:5000/products/${id}`;
+		// 	const url = `https://drone-shop-react.herokuapp.com/products/${id}`;
 		// 	fetch(url, {
 		// 		method: "DELETE",
 		// 	})

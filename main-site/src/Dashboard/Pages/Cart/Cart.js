@@ -10,7 +10,7 @@ const Cart = () => {
 	const [cartData, setCartData] = useState([]);
 
 	useEffect(() => {
-		const url = `http://localhost:5000/cart?email=${user?.email}`;
+		const url = `https://drone-shop-react.herokuapp.com/cart?email=${user?.email}`;
 		fetch(url, {
 			headers: {
 				authorization: `Bearer ${token}`,
@@ -30,7 +30,7 @@ const Cart = () => {
 			dangerMode: true,
 		}).then((willDelete) => {
 			if (willDelete) {
-				const url = `http://localhost:5000/cart/${id}`;
+				const url = `https://drone-shop-react.herokuapp.com/cart/${id}`;
 				fetch(url, {
 					method: "DELETE",
 				})
@@ -51,7 +51,7 @@ const Cart = () => {
 
 		// const proceed = window.confirm("Are you sure, you want to delete?");
 		// if (proceed) {
-		// 	const url = `http://localhost:5000/cart/${id}`;
+		// 	const url = `https://drone-shop-react.herokuapp.com/cart/${id}`;
 		// 	fetch(url, {
 		// 		method: "DELETE",
 		// 	})

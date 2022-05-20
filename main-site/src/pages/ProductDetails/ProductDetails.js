@@ -14,7 +14,7 @@ const ProductDetails = () => {
 	const [singleProduct, setSingleProduct] = useState([]);
 
 	useEffect(() => {
-		fetch(`http://localhost:5000/products/${productId}`)
+		fetch(`https://drone-shop-react.herokuapp.com/products/${productId}`)
 			.then((res) => res.json())
 			.then((data) => setSingleProduct(data));
 	}, [productId]);
@@ -32,7 +32,7 @@ const ProductDetails = () => {
 
 	const addToCart = () => {
 		// sent to server
-		fetch(`http://localhost:5000/cart`, {
+		fetch(`https://drone-shop-react.herokuapp.com/cart`, {
 			method: "POST",
 			headers: {
 				"content-type": "application/json",

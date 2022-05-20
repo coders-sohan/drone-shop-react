@@ -6,7 +6,7 @@ const admin = require("firebase-admin");
 require("dotenv").config();
 const port = process.env.PORT || 5000;
 
-const serviceAccount = require("./drone-shop-react-firebase-adminsdk.json");
+const serviceAccount = JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT);
 
 admin.initializeApp({
 	credential: admin.credential.cert(serviceAccount),

@@ -8,7 +8,7 @@ import useAuth from "../../hooks/useAuth";
 const Shop = () => {
 	const [products, setProducts] = useState([]);
 	useEffect(() => {
-		fetch("http://localhost:5000/products")
+		fetch("https://drone-shop-react.herokuapp.com/products")
 			.then((res) => res.json())
 			.then((data) => setProducts(data));
 	}, []);

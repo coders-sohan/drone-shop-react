@@ -19,7 +19,7 @@ const Setting = () => {
 			dangerMode: true,
 		}).then((willAdmin) => {
 			if (willAdmin) {
-				fetch(`http://localhost:5000/users/admin`, {
+				fetch(`https://drone-shop-react.herokuapp.com/users/admin`, {
 					method: "PUT",
 					headers: {
 						authorization: `Bearer ${token}`,
@@ -39,7 +39,7 @@ const Setting = () => {
 			}
 		});
 
-		// fetch(`http://localhost:5000/users/admin`, {
+		// fetch(`https://drone-shop-react.herokuapp.com/users/admin`, {
 		// 	method: "PUT",
 		// 	headers: {
 		// 		"content-type": "application/json",
