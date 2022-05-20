@@ -19,7 +19,6 @@ const ProductDetails = () => {
 			.then((data) => setSingleProduct(data));
 	}, [productId]);
 
-
 	// add to cart without id
 	const addToCartProduct = {
 		name: singleProduct?.name,
